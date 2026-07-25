@@ -1,0 +1,58 @@
+---
+---
+
+:root {
+    --ak-navbar-height: 120px;
+    --ak-colour-background: white;
+    --ak-colour-foreground: black;
+
+    --ak-colour-grey-800: rgb(245, 245, 245);
+    --ak-colour-grey-700: rgb(213, 213, 213);
+    --ak-colour-grey-600: rgb(181, 181, 181);
+    --ak-colour-grey-500: rgb(149, 149, 149);
+    --ak-colour-grey-400: rgb(117, 117, 117);
+    --ak-colour-grey-300: rgb(85, 85, 85);
+    --ak-colour-grey-200: rgb(53, 53, 53);
+    --ak-colour-grey-100: rgb(21, 21, 21);
+
+    --ak-transition-duration: 300ms;
+
+    @media (prefers-reduced-motion: reduce) {
+        --ak-transition-duration: 0ms
+    }
+
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0
+}
+
+h1, .brand {
+    width: max-content;
+    font-family: "Passero One", sans-serif;
+
+    color: transparent;
+
+    background-image: linear-gradient(90deg, var(--ak-colour-foreground), var(--ak-colour-foreground), var(--ak-colour-grey-500));
+    background-clip: text;
+}
+
+hr {
+    height: 4px;
+    margin-bottom: 16px;
+
+    border: none;
+    border-radius: 32px;
+
+    background: linear-gradient(90deg, var(--ak-colour-grey-100), var(--ak-colour-grey-400), var(--ak-colour-grey-800));
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: "Zilla Slab", sans-serif
+}
+
+main {
+    padding: 16px;
+}

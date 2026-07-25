@@ -1,0 +1,4 @@
+// VS Code is too rubbish to understand front matter in SCSS files
+{
+    "scss.validate": false
+}
