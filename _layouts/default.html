@@ -37,8 +37,12 @@
             <a href="/" class="brand">{{ site.brand }}</a>
 
             <div class="items">
-                <a href="/pages/links.html">Links</a>
-                <a href="/pages/contact.html">Contact</a>
+                {% for page in site.html_pages %}
+                    {% if page.pinned %}
+                        <a href="{{ page.url }}">{{ page.title }}</a>
+                    {% endif %}
+                {% endfor %}
+            
             </div>
         </nav>
 
