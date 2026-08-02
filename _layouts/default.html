@@ -6,6 +6,7 @@
         <link rel="shortcut icon" href="/assets/favicon.png" />
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/navbar.css" />
+        <link rel="stylesheet" href="/assets/css/hamburger.css" />
 
         <!-- Sorry, but I do not have time to self-host these fonts. -->
         <link
@@ -37,17 +38,33 @@
             <a href="/" class="brand">{{ site.brand }}</a>
 
             <div class="items">
-                {% for page in site.html_pages %}
-                    {% if page.pinned %}
-                        <a href="{{ page.url }}">{{ page.title }}</a>
-                    {% endif %}
-                {% endfor %}
+                <div class="links">
+                    {% for html_page in site.html_pages %}
+                        {% if html_page.pinned %}
+                            <a href="{{ html_page.url }}">{{ html_page.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             
+                <div class="mobile-fallback">
+                    <a class="hamburger" id="hamburger">
+                        <span class="material-symbols-outlined">
+                            menu
+                        </span>
+                    </a>
+                </div>
             </div>
         </nav>
 
-        <main>
+        <div class="hamburger-overlay" id="overlay" style="display: none;">
+            <h2>Menu</h2>
+            {% include table-of-contents.html %}
+        </div>
+
+        <main id="main">
             {{ content }}
         </main>
+
+        <script type="module" src="/assets/js/index.js"></script>
     </body>
 </html>

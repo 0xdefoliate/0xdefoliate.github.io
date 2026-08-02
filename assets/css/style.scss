@@ -1,8 +1,15 @@
 ---
 ---
 
+$mobile-breakpoint: 810px;
+
 :root {
     --ak-navbar-height: 120px;
+
+    @media (max-width: 400px) {
+        --ak-navbar-height: 75px;
+    }
+
     --ak-colour-background: white;
     --ak-colour-foreground: black;
 
