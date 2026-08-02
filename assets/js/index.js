@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Axel H. Karlsson
+
 function showOverlay() {
     document.getElementById("overlay")
         .removeAttribute("style")
