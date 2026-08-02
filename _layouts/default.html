@@ -66,8 +66,14 @@
         </div>
 
         <main id="main">
-            {{ content }}
+            <article>
+                {{ content }}
+            </article>
+
+            {% include footer.html %}
         </main>
+
+        
 
         <script type="module" src="/assets/js/index.js"></script>
     </body>
