@@ -1,10 +1,23 @@
 ---
 ---
 
+// Copyright (c) 2026 Axel H. Karlsson
+
+$mobile-breakpoint: 810px;
+
 :root {
     --ak-navbar-height: 120px;
+
+    @media (max-width: 400px) {
+        --ak-navbar-height: 75px;
+    }
+
+    --ak-footer-height: 30px;
+
     --ak-colour-background: white;
     --ak-colour-foreground: black;
+
+    --ak-colour-link: #0070e0;
 
     --ak-colour-grey-800: rgb(245, 245, 245);
     --ak-colour-grey-700: rgb(213, 213, 213);
@@ -54,5 +67,51 @@ h2, h3, h4, h5, h6 {
 }
 
 main {
-    padding: 16px;
+    --padding: 16px;
+
+    width: calc(100dvw - (var(--padding) * 2)); // reducing width and leaving space for padding fixes overflow bug
+    height: calc(100dvh - var(--padding) - var(--ak-footer-height) - var(--ak-navbar-height));
+
+    padding: var(--padding);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+footer {
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    width: 100%;
+    height: var(--ak-footer-height)
+}
+
+p, li, a {
+    font-size: 1.1rem;
+}
+
+a {
+    color: var(--ak-colour-link);
+    font-weight: bold;
+    text-decoration: none;
+
+    transition-duration: var(--ak-transition-duration);
+    transition-property: filter;
+
+    @media (hover: hover) {
+        &:hover {
+            text-decoration: underline;
+            filter: brightness(80%);
+        }
+    }
+}
+
+ul, ol {
+    li {
+        margin-bottom: 4px;
+    }
 }
