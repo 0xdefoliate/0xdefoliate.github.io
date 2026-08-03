@@ -17,6 +17,8 @@ $mobile-breakpoint: 810px;
     --ak-colour-background: white;
     --ak-colour-foreground: black;
 
+    --ak-colour-link: #0080FF;
+
     --ak-colour-grey-800: rgb(245, 245, 245);
     --ak-colour-grey-700: rgb(213, 213, 213);
     --ak-colour-grey-600: rgb(181, 181, 181);
@@ -86,4 +88,24 @@ footer {
 
     width: 100%;
     height: var(--ak-footer-height)
+}
+
+p, li, a {
+    font-size: 1.1rem;
+}
+
+a {
+    color: var(--ak-colour-link);
+    font-weight: bold;
+    text-decoration: none;
+
+    transition-duration: var(--ak-transition-duration);
+    transition-property: filter;
+
+    @media (hover: hover) {
+        &:hover {
+            text-decoration: underline;
+            filter: brightness(80%);
+        }
+    }
 }

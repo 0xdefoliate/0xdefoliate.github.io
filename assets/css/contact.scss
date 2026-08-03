@@ -1,0 +1,33 @@
+---
+---
+
+// Copyright (c) 2026 Axel H. Karlsson
+
+// This is styling for the `contact.html` page.
+
+ul.contact-methods {
+    list-style-type: none;
+
+    > li {
+        margin-bottom: 16px;
+    }
+}
+
+.contact-method {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    > .heading {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: bold;
+    }
+
+    > .content {
+        margin: 0;
+        margin-left: 30px;
+    }
+}
