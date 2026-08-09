@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="0xdefoliate.github.io [Copyright]" pattern="file:*.html||file:*.scss||file:*.sass||file:*.js||file:*.ts||file:*.rb||file:scripts//*" />
+</component>

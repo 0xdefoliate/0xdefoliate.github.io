@@ -1,2 +1,8 @@
 title: Axel H. Karlsson
 brand: Axel H. Karlsson
+
+# This is a custom directory containing compiled TypeScript
+# and Sass, which is subsequentially used by Jekyll.
+#
+# We do this because we want control over the build process.
+source: ./_intermediate

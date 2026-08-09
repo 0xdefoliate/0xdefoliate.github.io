@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year Axel H. Karlsson.&#10;&#10;Usage of source code is permitted under the BSD-3-Clause licence, which is available in the&#10;LICENSE file in the project's root directory.&#10;Any content and media, except the favicon, is licenced under CC BY-NC ND." />
+    <option name="myName" value="0xdefoliate.github.io" />
+  </copyright>
+</component>

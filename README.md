@@ -5,6 +5,32 @@ Axel H. Karlsson's personal webpage.
 **NOTE:** This is *not* the website currently deployed to [axelkarlsson.se](https://axelkarlsson.se), and this repo will replace the private repository  
 which has the source code for that version.
 
+## Development
+
+### Prerequisites
+
+You need the following to develop on this website:
+* `node.js` (v26 or later)
+* `npm` (v12 or later)
+* `ruby` (v4 or later)
+* `bundler` (v4 or later)
+* a UNIX environment
+
+### Getting Started
+
+Clone the repo to your machine, and run the following command inside the project root:
+
+```bash
+# The following will install all needed dependencies
+$ npm run ci
+```
+
+To serve the page locally on your machine, run:
+
+```bash
+$ npm run serve
+```
+
 ## Licencing
 
 You may use the source code of this project in accordance with the `LICENSE` file in the project's root.  
