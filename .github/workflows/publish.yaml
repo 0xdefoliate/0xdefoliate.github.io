@@ -1,0 +1,19 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+
+      - name: Install dependencies
+        run: npm run ci
+
+      - name: Build webpage
+        run: npm run build
