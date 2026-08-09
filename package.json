@@ -1,0 +1,29 @@
+{
+  "name": "0xdefoliate.github.io",
+  "private": "true",
+  "description": "Axel H. Karlsson's personal webpage.",
+  "homepage": "https://github.com/0xdefoliate/0xdefoliate.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/0xdefoliate/0xdefoliate.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xdefoliate/0xdefoliate.github.io.git"
+  },
+  "license": "BSD-3-Clause",
+  "author": "Axel H. Karlsson",
+  "type": "module",
+  "scripts": {
+    "ci": "npm ci --ignore-scripts && bundle install",
+    "clean": "rm -rf _intermediate _site",
+    "compile": "npm run clean && ./scripts/compile site _intermediate",
+    "build": "npm run compile && bundle exec jekyll build",
+    "serve": "npm run compile && bundle exec jekyll serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "packageManager": "npm@12.0.2",
+  "devDependencies": {
+    "sass-embedded": "1.100.0",
+    "typescript": "7.0.2"
+  }
+}

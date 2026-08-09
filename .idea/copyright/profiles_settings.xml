@@ -1,0 +1,17 @@
+<component name="CopyrightManager">
+  <settings>
+    <module2copyright>
+      <element module="0xdefoliate.github.io [Copyright]" copyright="0xdefoliate.github.io" />
+    </module2copyright>
+    <LanguageOptions name="HTML">
+      <option name="prefixLines" value="false" />
+    </LanguageOptions>
+    <LanguageOptions name="SCSS">
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="lenBefore" value="100" />
+      <option name="lenAfter" value="100" />
+      <option name="box" value="true" />
+    </LanguageOptions>
+  </settings>
+</component>

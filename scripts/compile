@@ -1,0 +1,98 @@
+#!/usr/bin/env sh
+
+#
+# Copyright (c) 2026 Axel H. Karlsson.
+#
+# Usage of source code is permitted under the BSD-3-Clause licence, which is available in the
+# LICENSE file in the project's root directory.
+# Any content and media, except the favicon, is licenced under CC BY-NC ND.
+#
+
+# ARGUMENTS:
+#     $1 = Path to `site/` directory.
+#     $2 = Path to directory to put outputted files
+
+assert() {
+    i=1
+    for var in "$@"; do
+        if [ -z "$var" ]; then
+            printf 'Expected $%s to be provided!\n' "$i"
+            unset i
+            exit 1
+        fi
+        i=$((i+1))
+    done
+
+    unset i
+}
+
+requires() {
+    for command in "$@"; do
+        if ! command -v "$command" >/dev/null 2>&1; then
+            printf 'Missing required command: %s!\n' "$command"
+            exit 1
+        fi
+    done
+}
+
+# we invoke these indirectly, so we disable those warnings.
+# shellcheck disable=SC2317
+sass() {
+    src_dir="$1"
+    out_dir="$2"
+
+    for junk in "$out_dir"/assets/css/*; do
+        rm "$junk"
+    done
+
+    for sass_file in "$src_dir"/assets/css/*; do
+        src="$(basename "$sass_file")"
+        out="$(echo "$src" | cut -d . -f 1).css"
+
+        npx --no \
+            sass-embedded "$src_dir/assets/css/$src" "$out_dir/assets/css/$out" --no-source-map
+    done
+}
+
+# we invoke these indirectly, so we disable those warnings.
+# shellcheck disable=SC2317
+typescript() {
+    src_dir="$1"
+    out_dir="$2"
+
+    for ts_file in "$out_dir"/assets/js/*.ts; do
+        npx --no \
+            tsc "$ts_file"
+    done
+
+   rm "$out_dir"/assets/js/*.ts
+}
+
+main() {
+    assert "$1" "$2"
+    requires npx
+
+    src_dir="$1"
+    out_dir="$2"
+
+    # This "array" must include valid function names,
+    # since these will get `eval`'d below.
+    tasks="sass typescript"
+
+    cp -R "$src_dir" "$out_dir"
+
+    for task in $tasks; do
+        $task "$src_dir" "$out_dir"
+    done
+
+    unset src_dir
+    unset out_dir
+}
+
+main "$@"
+
+unset assert
+unset requires
+unset sass
+unset typescript
+unset main
