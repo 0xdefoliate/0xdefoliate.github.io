@@ -6,12 +6,16 @@
  / Any content and media, except the favicon, is licenced under CC BY-NC ND.
  /
 
-button.hamburger
+button.hamburger, a.hamburger
     background-color: transparent
+    color: var(--ak-colour-foreground)
+
     border: none
     border-radius: 100%
 
     user-select: none
+
+    text-decoration: none
 
     display: flex
     align-items: center
@@ -22,14 +26,8 @@ button.hamburger
     @media (max-width: 400px)
         padding: 6px
 
-
     transition-property: background-color
     transition-duration: calc(var(--ak-transition-duration) / 3)
-
-    @media (hover: hover)
-        &:hover
-            background-color: var(--ak-colour-grey-800)
-
 
     &:active
         background-color: var(--ak-colour-grey-700)
@@ -52,6 +50,12 @@ button.hamburger
 
             border-bottom: 1px solid var(--ak-colour-grey-700)
 
+            transition-duration: var(--ak-transition-duration)
+            transition-property: background-color
+
+            &:has(a:active)
+                background-color: var(--ak-colour-grey-700)
+
             a
                 display: block
                 width: calc(100% - 8px)
@@ -61,3 +65,5 @@ button.hamburger
                 font-size: 1.35rem
                 color: var(--ak-colour-grey-100)
                 text-decoration: none
+
+
