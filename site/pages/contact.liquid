@@ -13,8 +13,7 @@ permalink: /contact
   ~ Any content and media, except the favicon, is licenced under CC BY-NC ND.
   -->
 
-<h1>Contact</h1>
-<hr />
+{% include title.html title="Contact" %}
 
 <p>
     You can contact me by any of the following methods.
@@ -24,7 +23,7 @@ permalink: /contact
     <li>
         <div class="contact-method">
             <div class="heading">
-                <span class="material-symbols-outlined">alternate_email</span>
+                {% include icon.html icon="alternate_email" %}
                 Email
             </div>
 
@@ -45,7 +44,7 @@ permalink: /contact
     <li>
         <div class="contact-method">
             <div class="heading">
-                <span class="material-symbols-outlined">chat</span>
+                {% include icon.html icon="chat" %}
                 Matrix
             </div>
 
