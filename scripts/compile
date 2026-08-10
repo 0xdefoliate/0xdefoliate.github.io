@@ -37,6 +37,24 @@ requires() {
 
 # we invoke these indirectly, so we disable those warnings.
 # shellcheck disable=SC2317
+html() {
+    # jekyll doesn't understand `.liquid` file extension,
+    # so we convert those to `.html` instead.
+
+    src_dir="$1"
+    out_dir="$2"
+
+    mv "$out_dir/index.liquid" "$out_dir/index.html"
+    mv "$out_dir/404.liquid" "$out_dir/404.html"
+
+    for liquid_file in "$out_dir"/**/*.liquid; do
+        out="$(echo "$liquid_file" | cut -d '.' -f 1).html"
+        mv "$liquid_file" "$out"
+    done
+}
+
+# we invoke these indirectly, so we disable those warnings.
+# shellcheck disable=SC2317
 sass() {
     src_dir="$1"
     out_dir="$2"
@@ -77,7 +95,7 @@ main() {
 
     # This "array" must include valid function names,
     # since these will get `eval`'d below.
-    tasks="sass typescript"
+    tasks="html sass typescript"
 
     cp -R "$src_dir" "$out_dir"
 
@@ -93,6 +111,7 @@ main "$@"
 
 unset assert
 unset requires
+unset html
 unset sass
 unset typescript
 unset main

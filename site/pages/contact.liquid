@@ -2,6 +2,7 @@
 title: Contact
 layout: default
 pinned: true
+permalink: /contact
 ---
 
 <!--
@@ -12,8 +13,7 @@ pinned: true
   ~ Any content and media, except the favicon, is licenced under CC BY-NC ND.
   -->
 
-<h1>Contact</h1>
-<hr />
+{% include title.html title="Contact" %}
 
 <p>
     You can contact me by any of the following methods.
@@ -23,7 +23,7 @@ pinned: true
     <li>
         <div class="contact-method">
             <div class="heading">
-                <span class="material-symbols-outlined">alternate_email</span>
+                {% include icon.html icon="alternate_email" %}
                 Email
             </div>
 
@@ -35,7 +35,7 @@ pinned: true
 
                 If you want to send E2EE emails, please use
                 <a class="link"
-                    href="https://keys.openpgp.org/vks/v1/by-fingerprint/ABD82E9260F0EDEE5D6AC6514B62494E03C8E8C1">
+                        href="https://keys.openpgp.org/vks/v1/by-fingerprint/ABD82E9260F0EDEE5D6AC6514B62494E03C8E8C1">
                     this PGP key
                 </a>.
             </p>
@@ -44,7 +44,7 @@ pinned: true
     <li>
         <div class="contact-method">
             <div class="heading">
-                <span class="material-symbols-outlined">chat</span>
+                {% include icon.html icon="chat" %}
                 Matrix
             </div>
 

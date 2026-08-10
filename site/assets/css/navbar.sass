@@ -18,7 +18,11 @@ $mobile-breakpoint: 810px
     width: 100dvw
     height: var(--ak-navbar-height)
 
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4)
+    @media (prefers-color-scheme: light)
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4)
+
+    @media (prefers-color-scheme: dark)
+        border-bottom: 1px solid var(--ak-colour-grey-600)
 
     .brand
         padding-left: 16px

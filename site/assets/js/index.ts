@@ -6,11 +6,7 @@
  * Any content and media, except the favicon, is licenced under CC BY-NC ND.
  */
 
-interface IElementStore {
-    overlay: HTMLElement
-    main: HTMLElement
-    hamburger: HTMLElement
-}
+/// <reference types="./types.d.ts" />
 
 class ElementStore {
     private readonly elements: IElementStore = {
@@ -24,37 +20,62 @@ class ElementStore {
     }
 }
 
+class HamburgerOverlay {
+    private readonly elements: ElementStore
 
-function showOverlay(elements: ElementStore) {
-    elements.get("overlay").removeAttribute("style")
-    elements.get("main").setAttribute("style", "display: none;")
+    public shown: boolean = false
 
-    elements.get("hamburger")
-        .firstElementChild!
-        .textContent = "close"
+    constructor(elements: ElementStore) {
+        this.elements = elements
+    }
+
+    public show() {
+        this.shown = true
+
+        this.elements.get("overlay").removeAttribute("style")
+        //this.elements.get("main").setAttribute("style", "display: none;")
+
+        this.elements.get("hamburger")
+            .firstElementChild!
+            .textContent = "close"
+    }
+
+    public hide() {
+        this.shown = false
+
+        this.elements.get("overlay").setAttribute("style", "display: none;")
+        //this.elements.get("main").removeAttribute("style")
+
+        this.elements.get("hamburger")
+            .firstElementChild!
+            .textContent = "menu"
+    }
+
+    public toggle() {
+        if (this.shown) {
+            return this.hide()
+        }
+
+        this.show()
+    }
 }
 
-function hideOverlay(elements: ElementStore) {
-    elements.get("overlay").setAttribute("style", "display: none;")
-    elements.get("main").removeAttribute("style")
+class Application {
+    private readonly elements = new ElementStore()
+    private readonly overlay: HamburgerOverlay
 
-    elements.get("hamburger")
-        .firstElementChild!
-        .textContent = "menu"
+    constructor() {
+        this.overlay = new HamburgerOverlay(this.elements)
+    }
+
+    public init() {
+        this.elements.get("hamburger").addEventListener("click", () => {
+            this.overlay.toggle()
+        })
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    const elements = new ElementStore()
-    let showingOverlay = false
-
-    const toggleOverlay = () =>
-        showingOverlay
-            ? hideOverlay(elements)
-            : showOverlay(elements)
-
-    elements.get("hamburger").addEventListener("click", () => {
-        toggleOverlay()
-        showingOverlay = !showingOverlay
-    })
+    const app = new Application()
+    app.init()
 })
