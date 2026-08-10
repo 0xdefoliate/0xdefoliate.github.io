@@ -41,6 +41,10 @@
         {% endif %}
     </head>
     <body>
+        <div class="hamburger-overlay" id="overlay" style="display: none;" aria-hidden="true">
+            {% include table-of-contents.html %}
+        </div>
+
         <nav class="navbar">
             <a href="/" class="brand">
                 {{ site.brand }}
@@ -62,11 +66,6 @@
                 </div>
             </div>
         </nav>
-
-        <div class="hamburger-overlay" id="overlay" style="display: none;">
-            <h2>Menu</h2>
-            {% include table-of-contents.html %}
-        </div>
 
         <div class="content-container">
             <main id="main">

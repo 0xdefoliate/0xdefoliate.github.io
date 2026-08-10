@@ -6,6 +6,25 @@
  / Any content and media, except the favicon, is licenced under CC BY-NC ND.
  /
 
+@keyframes dropdown
+    // This is an ugly workaround because `z-index` doesn't work
+    // when animating, so instead, to avoid having it look like
+    // the dropdown menu is *above* the navbar, we just hide it
+    // for the first half of the animation, which, at that point
+    // the dropdown menu has already gotten moved below the navbar.
+
+    0%
+        transform: translateY(-100%) scaleY(-100%)
+        opacity: 0
+
+    50%
+        opacity: 0
+
+    100%
+        transform: translateY(0) scaleY(100%)
+        opacity: 1
+
+
 button.hamburger, a.hamburger
     background-color: transparent
     color: var(--ak-colour-foreground)
@@ -33,22 +52,31 @@ button.hamburger, a.hamburger
         background-color: var(--ak-colour-grey-700)
 
 .hamburger-overlay
+    position: absolute
+    top: calc(var(--ak-navbar-height) + 1px)
+    left: 0
+
     width: 100dvw
-    height: calc(100dvh - var(--ak-navbar-height))
+    height: max-content
+
+    background-color: var(--ak-colour-background)
+
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5)
+
+    animation: calc(var(--ak-transition-duration) / 1.5) ease-out dropdown
 
     > h2
         margin: 0
         padding: 8px
 
     > ul
+        margin: 0
         list-style-type: none
         padding: 8px
 
         li
             width: 100%
             height: max-content
-
-            border-bottom: 1px solid var(--ak-colour-grey-700)
 
             transition-duration: var(--ak-transition-duration)
             transition-property: background-color
@@ -60,9 +88,9 @@ button.hamburger, a.hamburger
                 display: block
                 width: calc(100% - 8px)
 
-                padding: 8px
+                padding: 12px
 
-                font-size: 1.35rem
+                font-size: 1.4rem
                 color: var(--ak-colour-grey-100)
                 text-decoration: none
 
