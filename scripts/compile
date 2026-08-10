@@ -44,9 +44,8 @@ html() {
     src_dir="$1"
     out_dir="$2"
 
-    # do the `index.liquid` file manually since it is more maintainable
-    # to do it outright than make the for-loop more complex for just one file.
     mv "$out_dir/index.liquid" "$out_dir/index.html"
+    mv "$out_dir/404.liquid" "$out_dir/404.html"
 
     for liquid_file in "$out_dir"/**/*.liquid; do
         out="$(echo "$liquid_file" | cut -d '.' -f 1).html"
