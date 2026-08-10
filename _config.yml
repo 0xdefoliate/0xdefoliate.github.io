@@ -6,3 +6,7 @@ brand: Axel H. Karlsson
 #
 # We do this because we want control over the build process.
 source: ./_intermediate
+
+# See issue #15
+include:
+  - .well-known
