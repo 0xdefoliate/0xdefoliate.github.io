@@ -13,8 +13,22 @@ layout: default
 {% include title.html title="Welcome!" %}
 
 <p>
-    I am a software developer based in Sweden who likes to break stuff. <br />
-    Besides software development, I am enthusiastic about practical infosec usable by everyone. <br />
-    <br />
-    I like music, and have even produced music previously.
+    <span class="headline">
+        I am a software developer based in Sweden who likes to break stuff.
+    </span>
 </p>
+
+<h2>Interests</h2>
+
+<ul>
+    {% for interest in site.data.interests %}
+        <li>
+            <div class="icon-container">
+                {% include icon.html icon=interest.icon %}
+                <span>
+                    {{ interest.text }}
+                </span>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
