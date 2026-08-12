@@ -2,9 +2,6 @@
 
 Axel H. Karlsson's personal webpage.
 
-**NOTE:** This is *not* the website currently deployed to [axelkarlsson.se](https://axelkarlsson.se), and this repo will replace the private repository  
-which has the source code for that version.
-
 ## Development
 
 ### Prerequisites
