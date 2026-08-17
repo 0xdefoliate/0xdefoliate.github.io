@@ -100,7 +100,7 @@ typescript() {
             tsc "$ts_file"
     done
 
-   rm "$out_dir"/assets/js/*.ts
+    rm "$out_dir"/assets/js/*.ts
 }
 
 main() {
