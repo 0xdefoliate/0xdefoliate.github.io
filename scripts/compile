@@ -70,6 +70,23 @@ sass() {
         npx --no \
             sass-embedded "$src_dir/assets/css/$src" "$out_dir/assets/css/$out" --no-source-map
     done
+
+    # After transpiling Sass, minify the outputted CSS further with LightningCSS
+
+
+    # Yes, this is a pretty ugly hack, but in POSIX shell, there is
+    # not really an easy portable way to get path of the script itself.
+    #
+    # We can at least be sure that the $src_dir is correct.
+    # Will be a headache to debug if the project structure changes...
+    node "$src_dir/../scripts/bundle-css.js"
+
+    for junk in "$out_dir"/assets/css/*; do
+        if [ "$(basename "$junk")" != "bundle.css" ]; then
+            rm "$junk"
+        fi
+    done
+
 }
 
 # we invoke these indirectly, so we disable those warnings.

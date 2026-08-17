@@ -16,13 +16,16 @@
   "scripts": {
     "ci": "npm ci --ignore-scripts && bundle install",
     "clean": "rm -rf _intermediate _site",
-    "compile": "npm run clean && ./scripts/compile site _intermediate",
+    "compile": "npm run clean && ./scripts/compile site _intermediate && rolldown -c",
     "build": "npm run compile && bundle exec jekyll build",
     "serve": "npm run compile && bundle exec jekyll serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "packageManager": "npm@12.0.2",
   "devDependencies": {
+    "@types/node": "26.2.0",
+    "lightningcss": "1.33.0",
+    "rolldown": "1.2.4",
     "sass-embedded": "1.100.0",
     "typescript": "7.0.2"
   }
