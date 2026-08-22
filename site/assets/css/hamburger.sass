@@ -61,7 +61,16 @@ button.hamburger, a.hamburger
 
     background-color: var(--ak-colour-background)
 
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5)
+    @media (prefers-color-scheme: light)
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5)
+
+    @media (prefers-color-scheme: dark)
+        border-bottom: 1px solid var(--ak-colour-grey-300)
+
+        // Adding a shadow gives benefit even in dark mode if
+        // there is text directly below the hamburger menu,
+        // and it becomes clear where the boundary is in that case.
+        box-shadow: 0 2px 16px rgb(0, 0, 0)
 
     animation: calc(var(--ak-transition-duration) / 1.5) ease-out dropdown
 
@@ -93,5 +102,3 @@ button.hamburger, a.hamburger
                 font-size: 1.4rem
                 color: var(--ak-colour-grey-100)
                 text-decoration: none
-
-
