@@ -6,6 +6,8 @@
  / Any content and media, except the favicon, is licenced under CC BY-NC ND.
  /
 
+@use "util" as *
+
 @keyframes dropdown
     // This is an ugly workaround because `z-index` doesn't work
     // when animating, so instead, to avoid having it look like
@@ -42,13 +44,13 @@ button.hamburger, a.hamburger
 
     padding: 16px
 
-    @media (max-width: 400px)
+    @include ScreenMaximum("phone")
         padding: 6px
 
     transition-property: background-color
     transition-duration: calc(var(--ak-transition-duration) / 3)
 
-    &:active
+    @include Click
         background-color: var(--ak-colour-grey-700)
 
 .hamburger-overlay
@@ -65,7 +67,7 @@ button.hamburger, a.hamburger
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5)
 
     @media (prefers-color-scheme: dark)
-        border-bottom: 1px solid var(--ak-colour-grey-300)
+        border-bottom: 1px solid var(--ak-colour-grey-600)
 
         // Adding a shadow gives benefit even in dark mode if
         // there is text directly below the hamburger menu,
@@ -87,8 +89,7 @@ button.hamburger, a.hamburger
             width: 100%
             height: max-content
 
-            transition-duration: var(--ak-transition-duration)
-            transition-property: background-color
+            @include Transition(background-color)
 
             &:has(a:active)
                 background-color: var(--ak-colour-grey-700)

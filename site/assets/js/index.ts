@@ -6,19 +6,7 @@
  * Any content and media, except the favicon, is licenced under CC BY-NC ND.
  */
 
-/// <reference types="./types.d.ts" />
-
-class ElementStore {
-    private readonly elements: IElementStore = {
-        overlay: document.getElementById("overlay")!,
-        main: document.getElementById("main")!,
-        hamburger: document.getElementById("hamburger")!
-    }
-
-    public get(id: keyof IElementStore): IElementStore[keyof IElementStore] {
-        return this.elements[id]
-    }
-}
+import { ElementStore } from "./util"
 
 class HamburgerOverlay {
     private readonly elements: ElementStore
@@ -33,7 +21,6 @@ class HamburgerOverlay {
         this.shown = true
 
         this.elements.get("overlay").removeAttribute("style")
-        //this.elements.get("main").setAttribute("style", "display: none;")
 
         this.elements.get("hamburger")
             .firstElementChild!
@@ -44,7 +31,6 @@ class HamburgerOverlay {
         this.shown = false
 
         this.elements.get("overlay").setAttribute("style", "display: none;")
-        //this.elements.get("main").removeAttribute("style")
 
         this.elements.get("hamburger")
             .firstElementChild!

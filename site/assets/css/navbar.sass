@@ -6,7 +6,7 @@
  / Any content and media, except the favicon, is licenced under CC BY-NC ND.
  /
 
-$mobile-breakpoint: 810px
+@use "_util" as *
 
 .navbar
     display: flex
@@ -30,18 +30,16 @@ $mobile-breakpoint: 810px
 
         text-decoration: none
 
-        transition-duration: var(--ak-transition-duration)
-        transition-property: text-shadow
+        @include Transition(text-shadow)
 
-        @media (hover: hover)
-            &:hover
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25)
+        @include Hover
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25)
 
-        @media (max-width: 520px)
+        @include ScreenMaximum("mini-tablet")
             padding-left: 10px
             font-size: 2.3rem
 
-        @media (max-width: 400px)
+        @include ScreenMaximum("phone")
             padding-left: 2px
             font-size: 2rem
 
@@ -49,33 +47,38 @@ $mobile-breakpoint: 810px
         display: flex
         padding-right: 4px
 
-        @media (min-width: 810px)
+        @include ScreenMinimum("tablet")
             padding-right: 16px
 
         > .links
             display: flex
             justify-content: center
 
-            @media (max-width: $mobile-breakpoint)
+            @include ScreenMaximum("tablet")
                 display: none
 
             gap: 20px
 
             > a
+                display: inline flex
+                align-items: center
+                gap: 4px
+
+                padding: 8px
+                border-radius: 32px
+
                 font-size: 1.3rem
                 color: var(--ak-colour-grey-100)
                 text-decoration: none
 
-                transition-duration: var(--ak-transition-duration)
-                transition-property: color
+                @include Transition(color)
 
-                @media (hover: hover)
-                    &:hover
-                        color: var(--ak-colour-grey-400)
+                @include Hover
+                    color: var(--ak-colour-grey-400)
 
-                &:active
+                @include Click
                     color: var(--ak-colour-grey-600)
 
         > .mobile-fallback
-            @media (min-width: $mobile-breakpoint + 1)
+            @include ScreenMinimum("tablet")
                 display: none
