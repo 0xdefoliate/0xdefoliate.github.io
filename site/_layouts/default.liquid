@@ -11,8 +11,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="{{ site.author }}" />
-        <meta name="description" content="Personal webpage of {{ site.author }} - a software developer based in Sweden." />
+        <meta name="author" content="{{ site.author.legal_name }}" />
+        <meta name="description" content="Personal webpage of {{ site.author.name }} - {{ site.author.brief }}" />
 
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
@@ -35,9 +35,9 @@
         <script type="module" src="/assets/js/index.js"></script>
 
         {% if page.title %}
-            <title>{{ site.title }} - {{ page.title }}</title>
+            <title>{{ site.author.name }} | {{ page.title }}</title>
         {% else %}
-            <title>{{ site.title }}</title>
+            <title>{{ site.author.name }}</title>
         {% endif %}
     </head>
     <body>
@@ -47,7 +47,7 @@
 
         <nav class="navbar">
             <a href="/" class="brand">
-                {{ site.brand }}
+                {{ site.author.name }}
             </a>
 
             <div class="items">

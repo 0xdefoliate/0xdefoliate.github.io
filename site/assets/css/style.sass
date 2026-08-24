@@ -6,12 +6,12 @@
  / Any content and media, except the favicon, is licenced under CC BY-NC ND.
  /
 
-$mobile-breakpoint: 810px
+@use "_util" as *
 
 :root
     --ak-navbar-height: 120px
 
-    @media (max-width: 400px)
+    @include ScreenMaximum("phone")
         --ak-navbar-height: 75px
 
     --ak-footer-height: 30px
@@ -50,14 +50,14 @@ $mobile-breakpoint: 810px
     @media (prefers-reduced-motion: reduce)
         --ak-transition-duration: 0ms
 
+body
+    margin: 0
+    padding: 0
+
     font-family: "Lato", sans-serif
 
     background-color: var(--ak-colour-background)
     color: var(--ak-colour-foreground)
-
-body
-    margin: 0
-    padding: 0
 
 h1, .brand
     width: max-content
@@ -118,13 +118,11 @@ a.link
     font-weight: bold
     text-decoration: none
 
-    transition-duration: var(--ak-transition-duration)
-    transition-property: filter
+    @include Transition(filter)
 
-    @media (hover: hover)
-        &:hover
-            text-decoration: underline
-            filter: brightness(80%)
+    @include Hover
+        text-decoration: underline
+        filter: brightness(80%)
 
 ul, ol
     li

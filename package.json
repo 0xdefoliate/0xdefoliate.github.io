@@ -16,7 +16,7 @@
   "scripts": {
     "ci": "npm ci --ignore-scripts && bundle install",
     "clean": "rm -rf _intermediate _site",
-    "compile": "npm run clean && ./scripts/compile site _intermediate && rolldown -c",
+    "compile": "npm run clean && ./scripts/compile site _intermediate ./rolldown.config.js",
     "build": "npm run compile && bundle exec jekyll build",
     "serve": "npm run compile && bundle exec jekyll serve",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -11,6 +11,7 @@
 # ARGUMENTS:
 #     $1 = Path to `site/` directory.
 #     $2 = Path to directory to put outputted files
+#     $3 = Path to rolldown config file
 
 assert() {
     i=1
@@ -81,6 +82,7 @@ sass() {
     # Will be a headache to debug if the project structure changes...
     node "$src_dir/../scripts/bundle-css.js"
 
+    # remove leftover stuff which isn't useful after bundling.
     for junk in "$out_dir"/assets/css/*; do
         if [ "$(basename "$junk")" != "bundle.css" ]; then
             rm "$junk"
@@ -94,6 +96,7 @@ sass() {
 typescript() {
     src_dir="$1"
     out_dir="$2"
+    rolldown_config_file="$3"
 
     for ts_file in "$out_dir"/assets/js/*.ts; do
         npx --no \
@@ -101,34 +104,34 @@ typescript() {
     done
 
     rm "$out_dir"/assets/js/*.ts
+
+    npx --no \
+        rolldown -- -c "$rolldown_config_file"
+
+    # remove leftover stuff which isn't useful after bundling.
+    for junk in "$out_dir"/assets/js/*.js; do
+        if [ "$(basename "$junk")" != "index.js" ]; then
+            rm "$junk"
+        fi
+    done
 }
 
 main() {
-    assert "$1" "$2"
+    assert "$1" "$2" "$3"
     requires npx
-
-    src_dir="$1"
-    out_dir="$2"
 
     # This "array" must include valid function names,
     # since these will get `eval`'d below.
     tasks="html sass typescript"
 
-    cp -R "$src_dir" "$out_dir"
+    # Copy the original site/ directory into the intermediate
+    # one where we will transform and bundle source files
+    # before handing over to Jekyll.
+    cp -R "$1" "$2"
 
     for task in $tasks; do
-        $task "$src_dir" "$out_dir"
+        $task "$1" "$2" "$3"
     done
-
-    unset src_dir
-    unset out_dir
 }
 
 main "$@"
-
-unset assert
-unset requires
-unset html
-unset sass
-unset typescript
-unset main

@@ -1,0 +1,49 @@
+/*!
+ / Copyright (c) 2026 Axel H. Karlsson.
+ /
+ / Usage of source code is permitted under the BSD-3-Clause licence, which is available in the
+ / LICENSE file in the project's root directory.
+ / Any content and media, except the favicon, is licenced under CC BY-NC ND.
+ /
+
+@use "sass:list"
+@use "sass:string"
+
+@mixin Hover
+    @media (hover: hover)
+        &:not([disabled]):hover
+            @content
+
+@mixin Click
+    &:not([disabled]):active
+        @content
+
+@mixin ScreenMaximum($max)
+    @if $max == "tablet"
+        @media (max-width: 810px)
+            @content
+    @else if $max == "mini-tablet"
+        @media (max-width: 520px)
+            @content
+    @else if $max == "phone"
+        @media (max-width: 400px)
+            @content
+    @else
+        @error "Expected one of 'tablet', 'mini-tablet', or 'phone' to be provided!"
+
+@mixin ScreenMinimum($min)
+    @if $min == "tablet"
+        @media (min-width: 810px + 1px)
+            @content
+    @else if $min == "mini-tablet"
+        @media (min-width: 520px + 1px)
+            @content
+    @else if $min == "phone"
+        @media (min-width: 400px + 1px)
+            @content
+    @else
+        @error "Expected one of 'tablet', 'mini-tablet', or 'phone' to be provided!"
+
+@mixin Transition($of...)
+    transition-duration: var(--ak-transition-duration)
+    transition-property: #{$of}
