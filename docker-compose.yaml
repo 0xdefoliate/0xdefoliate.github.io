@@ -1,0 +1,14 @@
+services:
+  serve:
+    build:
+      context: .
+      dockerfile: ./docker/serve/Dockerfile
+    ports:
+      - "4000:4000"
+    develop:
+      watch:
+        - action: sync+exec
+          target: /live/site
+          path: ./site
+          exec:
+            command: npm run build

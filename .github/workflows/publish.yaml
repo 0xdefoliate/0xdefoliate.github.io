@@ -14,14 +14,14 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1.321.0
         with:
-          ruby-version: "4.0.6"
+          ruby-version: "4.0.7"
           bundler: "4.0.16"
           bundler-cache: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '26.7.0'
+          node-version: '26.12.0'
 
       - name: Install dependencies
         run: npm run ci

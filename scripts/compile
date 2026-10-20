@@ -64,16 +64,10 @@ sass() {
         rm "$junk"
     done
 
-    for sass_file in "$src_dir"/assets/css/*; do
-        src="$(basename "$sass_file")"
-        out="$(echo "$src" | cut -d . -f 1).css"
-
-        npx --no \
-            sass-embedded "$src_dir/assets/css/$src" "$out_dir/assets/css/$out" --no-source-map
-    done
+    npx --no \
+        sass-embedded "$src_dir/assets/css":"$out_dir/assets/css"
 
     # After transpiling Sass, minify the outputted CSS further with LightningCSS
-
 
     # Yes, this is a pretty ugly hack, but in POSIX shell, there is
     # not really an easy portable way to get path of the script itself.
